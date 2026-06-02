@@ -1,0 +1,110 @@
+﻿@model IEnumerable<QuanLyKTX.Models.Registration>
+
+@{
+    ViewData["Title"] = "Đăng ký phòng";
+}
+
+<header class="topbar">
+    <div class="page-title">
+        <h1>Đăng ký phòng</h1>
+        <p>Quản lý danh sách đăng ký ký túc xá</p>
+    </div>
+</header>
+
+<section class="table-card">
+
+    <div class="table-header">
+
+        <div>
+            <h3>Danh sách đăng ký</h3>
+            <p>Theo dõi các yêu cầu đăng ký phòng</p>
+        </div>
+
+        <a asp-action="Create"
+               class="btn btn-primary">
+            + Tạo đăng ký
+        </a>
+
+    </div>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Sinh viên</th>
+                    <th>Phòng</th>
+                    <th>Ngày đăng ký</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Student?.FullName
+                        </td>
+
+                        <td>
+                            @item.Room?.RoomCode
+                        </td>
+
+                        <td>
+                            @item.RegistrationDate.ToString("dd/MM/yyyy")
+                        </td>
+
+                        <td>
+
+                            @if (item.Status == "Đã duyệt")
+                            {
+                                <span class="status status-registered">
+                                    Đã duyệt
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="status status-pending">
+                                    Đang chờ
+                                </span>
+                            }
+
+                        </td>
+
+                        <td>
+
+                            <div class="row-actions">
+
+                                <a asp-action="Edit"
+                                       asp-route-id="@item.RegistrationId"
+                                       class="action-btn action-edit">
+                                    Sửa
+                                </a>
+
+                                <a asp-action="Delete"
+                                       asp-route-id="@item.RegistrationId"
+                                       class="action-btn action-delete">
+                                    Xóa
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>

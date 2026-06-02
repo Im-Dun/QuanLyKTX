@@ -1,0 +1,60 @@
+﻿@model IEnumerable<QuanLyKTX.Models.Student>
+
+@{
+    ViewData["Title"] = "Quản lý sinh viên";
+}
+
+<div class="container mt-4">
+
+    <h2>Quản lý sinh viên</h2>
+
+    <p>
+        <a asp-action="Create"
+               class="btn btn-success">
+            Thêm sinh viên
+        </a>
+    </p>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Giới tính</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FullName</td>
+                    <td>@item.Gender</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+
+                    <td>
+                        <a asp-action="Edit"
+                               asp-route-id="@item.StudentId"
+                               class="btn btn-warning btn-sm">
+                            Sửa
+                        </a>
+
+                        <a asp-action="Delete"
+                               asp-route-id="@item.StudentId"
+                               class="btn btn-danger btn-sm">
+                            Xóa
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        Dashboard Quản Lý KTX
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Tổng phòng</h5>
+                    <h2>@ViewBag.TotalRooms</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Sinh viên</h5>
+                    <h2>@ViewBag.TotalStudents</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Đăng ký</h5>
+                    <h2>@ViewBag.TotalRegistrations</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Hóa đơn</h5>
+                    <h2>@ViewBag.TotalInvoices</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+
+            <div class="col-md-6">
+                <div class="card p-3">
+
+                    <h5>Trạng thái phòng</h5>
+
+                    <canvas id="roomChart"></canvas>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card p-3">
+
+                    <h5>Trạng thái hóa đơn</h5>
+
+                    <canvas id="invoiceChart"></canvas>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+@section Scripts {
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        const roomCtx =
+        document.getElementById('roomChart');
+
+        new Chart(roomCtx, {
+
+        type: 'pie',
+
+        data: {
+
+        labels: [
+        'Còn chỗ',
+        'Đã đầy'
+        ],
+
+        datasets: [{
+        data: [
+        @ViewBag.AvailableRooms,
+        @ViewBag.FullRooms
+        ]
+        }]
+        }
+
+        });
+
+        const invoiceCtx =
+        document.getElementById('invoiceChart');
+
+        new Chart(invoiceCtx, {
+
+        type: 'doughnut',
+
+        data: {
+
+        labels: [
+        'Đã thanh toán',
+        'Chưa thanh toán'
+        ],
+
+        datasets: [{
+        data: [
+        @ViewBag.PaidInvoices,
+        @ViewBag.UnpaidInvoices
+        ]
+        }]
+        }
+
+        });
+
+    </script>
+
+}

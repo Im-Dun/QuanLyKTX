@@ -1,0 +1,116 @@
+﻿@model IEnumerable<QuanLyKTX.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Hóa đơn";
+}
+
+<header class="topbar">
+    <div class="page-title">
+        <h1>Quản lý hóa đơn</h1>
+        <p>Theo dõi thanh toán ký túc xá</p>
+    </div>
+</header>
+
+<section class="table-card">
+
+    <div class="table-header">
+
+        <div>
+            <h3>Danh sách hóa đơn</h3>
+            <p>Thông tin các khoản phí nội trú</p>
+        </div>
+
+        <a asp-action="Create"
+               class="btn btn-primary">
+            + Tạo hóa đơn
+        </a>
+
+    </div>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Sinh viên</th>
+                    <th>Số tiền</th>
+                    <th>Hạn thanh toán</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Student?.FullName
+                        </td>
+
+                        <td>
+                            @String.Format("{0:N0} VNĐ", item.Amount)
+                        </td>
+
+                        <td>
+                            @item.DueDate.ToString("dd/MM/yyyy")
+                        </td>
+
+                        <td>
+
+                            @if (item.Status == "Đã thanh toán")
+                            {
+                                <span class="status status-paid">
+                                    Đã thanh toán
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="status status-overdue">
+                                    Chưa thanh toán
+                                </span>
+                            }
+
+                        </td>
+
+                        <td>
+
+                            <div class="row-actions">
+
+                                <a asp-action="Edit"
+                                       asp-route-id="@item.InvoiceId"
+                                       class="action-btn action-edit">
+                                    Sửa
+                                </a>
+
+                                <a asp-action="Details"
+                                       asp-route-id="@item.InvoiceId"
+                                       class="action-btn">
+                                    Chi tiết
+                                </a>
+
+                                <a asp-action="Delete"
+                                       asp-route-id="@item.InvoiceId"
+                                       class="action-btn action-delete">
+                                    Xóa
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>

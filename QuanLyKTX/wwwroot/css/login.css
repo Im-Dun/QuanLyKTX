@@ -1,0 +1,123 @@
+﻿body {
+    margin: 0;
+    font-family: 'Segoe UI',sans-serif;
+    background: #eef2ff;
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 1000px;
+    max-width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,.15);
+}
+
+.login-visual {
+    padding: 50px;
+    color: white;
+    background: linear-gradient( 135deg, #1e1b8f, #6d28d9, #7c3aed );
+}
+
+    .login-visual h1 {
+        font-size: 48px;
+        line-height: 1.1;
+        margin: 40px 0 20px;
+    }
+
+    .login-visual p {
+        opacity: .9;
+    }
+
+.login-form {
+    padding: 50px;
+}
+
+.brand-mark {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: white;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.login-brandline {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    .field label {
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .field input {
+        padding: 14px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+
+        .field input:focus {
+            outline: none;
+            border-color: #7c3aed;
+        }
+
+.btn-login {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 999px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient( 90deg, #4f46e5, #7c3aed );
+}
+
+    .btn-login:hover {
+        opacity: .95;
+    }
+
+.badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+}
+
+.error-box {
+    margin: 15px 0;
+    padding: 12px;
+    background: #fee2e2;
+    color: #dc2626;
+    border-radius: 10px;
+}
+
+.login-help {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+    font-size: 14px;
+}

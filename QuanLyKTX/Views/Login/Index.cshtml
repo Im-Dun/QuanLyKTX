@@ -1,0 +1,114 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Đăng nhập hệ thống</title>
+
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+
+<body class="login-page">
+
+    <main class="login-card">
+
+        <section class="login-visual">
+
+            <div>
+
+                <div class="login-brandline">
+
+                    <div class="brand-mark">
+                        KTX
+                    </div>
+
+                    <div>
+                        <div class="login-kicker">
+                            QuanLyKTX
+                        </div>
+
+                        <div class="sub-text">
+                            Software Engineering Project
+                        </div>
+                    </div>
+
+                </div>
+
+                <h1>
+                    Quản lý ký túc xá.
+                </h1>
+
+            </div>
+
+        </section>
+
+        <section class="login-form">
+
+            <div class="section-title">
+
+                <span class="badge">
+                    Login
+                </span>
+
+                <h2>
+                    Đăng nhập hệ thống
+                </h2>
+
+                <p>
+                    Nhập thông tin tài khoản để truy cập dashboard quản trị.
+                </p>
+
+            </div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error-box">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form method="post">
+
+                <div class="field">
+
+                    <label>Tên đăng nhập</label>
+
+                    <input type="text"
+                           name="username"
+                           placeholder="admin" />
+
+                </div>
+
+                <div class="field">
+
+                    <label>Mật khẩu</label>
+
+                    <input type="password"
+                           name="password"
+                           placeholder="123456" />
+
+                </div>
+
+                <button class="btn-login"
+                        type="submit">
+
+                    Đăng nhập
+
+                </button>
+
+            </form>
+
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

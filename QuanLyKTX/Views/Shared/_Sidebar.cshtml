@@ -1,0 +1,62 @@
+﻿<aside class="sidebar">
+
+    <div class="brand">
+        <div class="brand-mark">KTX</div>
+
+        <div>
+            <h1>QuanLyKTX</h1>
+            <p>Admin Dashboard</p>
+        </div>
+    </div>
+
+    <nav>
+
+        <ul class="nav-menu">
+
+            <li>
+                <a asp-controller="Dashboard"
+                       asp-action="Index">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Room"
+                       asp-action="Index">
+                    Quản lý phòng
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Student"
+                       asp-action="Index">
+                    Sinh viên
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Registration"
+                       asp-action="Index">
+                    Đăng ký
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Invoice"
+                       asp-action="Index">
+                    Hóa đơn
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Login"
+                       asp-action="Logout">
+                    Đăng xuất
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</aside>

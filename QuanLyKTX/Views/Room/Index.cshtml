@@ -1,0 +1,100 @@
+﻿@model IEnumerable<QuanLyKTX.Models.Room>
+
+@{
+    ViewData["Title"] = "Quản lý phòng";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-3">
+        Quản lý phòng ký túc xá
+    </h2>
+
+    <p>
+        <a asp-action="Create"
+           class="btn btn-success">
+            Thêm phòng
+        </a>
+    </p>
+
+    <section class="table-card">
+
+        <div class="table-header">
+
+            <div>
+                <h3>Danh sách phòng</h3>
+                <p>Quản lý thông tin phòng KTX</p>
+            </div>
+
+            <a asp-action="Create"
+                   class="btn btn-primary">
+
+                + Thêm phòng
+
+            </a>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Mã phòng</th>
+                        <th>Tên phòng</th>
+                        <th>Sức chứa</th>
+                        <th>Đang ở</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.RoomCode</td>
+
+                            <td>@item.RoomName</td>
+
+                            <td>@item.Capacity</td>
+
+                            <td>@item.CurrentOccupancy</td>
+
+                            <td>
+                                <span class="status status-free">
+                                    @item.Status
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <a asp-action="Edit"
+                                       asp-route-id="@item.RoomId"
+                                       class="action-btn action-edit">
+                                    Sửa
+                                </a>
+
+                                <a asp-action="Delete"
+                                       asp-route-id="@item.RoomId"
+                                       class="action-btn action-delete">
+                                    Xóa
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
